@@ -2,7 +2,6 @@ package snf.api;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -56,7 +55,7 @@ public class PieceContainer {
           dimension.width = bufferedImage.getWidth();
           dimension.height = bufferedImage.getHeight();
           graphics.drawImage(bufferedImage, 0, 0, null);
-          images.add(new ScalableImage(bufferedImage, AffineTransformOp.TYPE_BICUBIC));
+          images.add(new ScalableImage(bufferedImage));
         } catch (IOException exception) {
           exception.printStackTrace();
         }
