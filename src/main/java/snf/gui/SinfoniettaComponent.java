@@ -12,7 +12,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
-import java.awt.image.AffineTransformOp;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,6 +36,7 @@ import ch.alpine.tensor.RealScalar;
 import ch.alpine.tensor.Tensor;
 import ch.alpine.tensor.Tensors;
 import ch.alpine.tensor.alg.Array;
+import ch.alpine.tensor.img.ImageResize;
 import ch.alpine.tensor.mat.re.LinearSolve;
 import ch.alpine.tensor.qty.Timing;
 import ch.alpine.tensor.sca.Round;
@@ -123,15 +123,15 @@ public class SinfoniettaComponent extends JPanel implements LazyMouseListener {
         Optional<ScalableImage> optional2 = pieceSession.getImageNext();
         if (optional2.isPresent()) {
           list.add(rectangle.width + " x " + rectangle.height);
-          graphics.drawImage(optional2.orElseThrow().getScaledInstance(rectangle.width, rectangle.height, AffineTransformOp.TYPE_BICUBIC), rectangle.x,
-              rectangle.y, null);
+          graphics.drawImage(optional2.orElseThrow().getScaledInstance(ImageResize.DEGREE_3, rectangle.width, rectangle.height), rectangle.x, rectangle.y,
+              null);
           TurnParam turnParam = pieceSession.turnParam();
           int ext = (int) (rectangle.width * turnParam.ex.number().floatValue());
           int x = (int) ((rectangle.width + 2 * ext) * turnParam.ratio.number().floatValue()) - ext;
           int _x = Math.max(0, x);
           graphics.setClip(rectangle.x + _x, rectangle.y, rectangle.width - _x, rectangle.height);
-          graphics.drawImage(pieceSession.getImage().getScaledInstance(rectangle.width, rectangle.height, AffineTransformOp.TYPE_BICUBIC), rectangle.x,
-              rectangle.y, null);
+          graphics.drawImage(pieceSession.getImage().getScaledInstance(ImageResize.DEGREE_3, rectangle.width, rectangle.height), rectangle.x, rectangle.y,
+              null);
           if (pieceSession.getPage() == 0) {
             Graphics2D _g = (Graphics2D) g2d.create();
             _g.transform(AffineTransforms.of(matrix));
@@ -199,8 +199,8 @@ public class SinfoniettaComponent extends JPanel implements LazyMouseListener {
           graphics.fillRect(rectangle.x + x - ext, rectangle.y, 2 * ext, rectangle.height);
           graphics.setClip(null);
         } else {
-          graphics.drawImage(pieceSession.getImage().getScaledInstance(rectangle.width, rectangle.height, AffineTransformOp.TYPE_BICUBIC), rectangle.x,
-              rectangle.y, null);
+          graphics.drawImage(pieceSession.getImage().getScaledInstance(ImageResize.DEGREE_3, rectangle.width, rectangle.height), rectangle.x, rectangle.y,
+              null);
         }
       }
     }
