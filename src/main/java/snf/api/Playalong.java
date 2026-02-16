@@ -18,7 +18,7 @@ import ch.alpine.sonata.mid.cmp.AudioModel;
 import ch.alpine.sonata.scr.Score;
 import ch.alpine.sonata.seq.MidiSequence;
 import ch.alpine.sonata.seq.PostponedSequence;
-import ch.alpine.tensor.RationalScalar;
+import ch.alpine.tensor.Rational;
 import ch.alpine.tensor.Scalar;
 import ch.alpine.tensor.Tensor;
 import ch.alpine.tensor.Tensors;
@@ -122,7 +122,7 @@ public abstract class Playalong {
     timerTask = new TimerTask() {
       @Override
       public void run() {
-        Scalar page = pagesParam.pageOf(RationalScalar.of( //
+        Scalar page = pagesParam.pageOf(Rational.of( //
             audio_offset_ticks + TpfLocal.INSTANCE.getMidiPut().getTickPosition(), //
             score.measure() * AudioModel.FACTOR));
         setPage(page);

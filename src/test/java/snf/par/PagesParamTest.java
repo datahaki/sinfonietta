@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import ch.alpine.sonata.enc.ly.PagesParam;
-import ch.alpine.tensor.RationalScalar;
+import ch.alpine.tensor.Rational;
 import ch.alpine.tensor.RealScalar;
 import ch.alpine.tensor.Tensors;
 import ch.alpine.tensor.mat.Tolerance;
@@ -16,7 +16,7 @@ class PagesParamTest {
     PagesParam pagesParam = new PagesParam();
     pagesParam.measures = Tensors.vector(0, 10, 30);
     // PlayalongParam pagesParam = new PlayalongParam(1);
-    pagesParam.pageTurn = RationalScalar.of(1, 1);
+    pagesParam.pageTurn = Rational.of(1, 1);
     assertEquals(pagesParam.pageOf(RealScalar.of(-1)), RealScalar.ZERO);
     assertEquals(pagesParam.pageOf(RealScalar.of(0)), RealScalar.ZERO);
     assertEquals(pagesParam.pageOf(RealScalar.of(3)), RealScalar.ZERO);
@@ -35,7 +35,7 @@ class PagesParamTest {
     PagesParam pagesParam = new PagesParam();
     pagesParam.measures = Tensors.vector(0, 10, 30);
     // PlayalongParam pagesParam = new PlayalongParam(1);
-    pagesParam.pageTurn = RationalScalar.of(1, 2);
+    pagesParam.pageTurn = Rational.of(1, 2);
     assertEquals(pagesParam.pageOf(RealScalar.of(-1)), RealScalar.ZERO);
     assertEquals(pagesParam.pageOf(RealScalar.of(0)), RealScalar.ZERO);
     assertEquals(pagesParam.pageOf(RealScalar.of(3)), RealScalar.ZERO);
