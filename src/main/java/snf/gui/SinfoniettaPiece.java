@@ -1,3 +1,4 @@
+// code by jph
 package snf.gui;
 
 import javax.swing.JList;

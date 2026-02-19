@@ -1,3 +1,4 @@
+// code by jph
 package snf.par;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

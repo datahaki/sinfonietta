@@ -1,3 +1,4 @@
+// code by jph
 package snf.stc;
 
 import java.util.Optional;

@@ -1,3 +1,4 @@
+// code by jph
 package snf.par;
 
 import java.util.LinkedList;
@@ -59,7 +60,6 @@ public class SynthParam {
   }
 
   public static SynthParam getPlayer(String name) {
-    // TODO use EnumValue
     int index = ArgMin.of(LIST.stream() //
         .map(v -> v.name) //
         .map(EditDistance.function(name)) //

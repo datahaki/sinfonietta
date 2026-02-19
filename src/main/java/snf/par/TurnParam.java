@@ -1,3 +1,4 @@
+// code by jph
 package snf.par;
 
 import ch.alpine.bridge.ref.ann.FieldClip;
