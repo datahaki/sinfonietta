@@ -4,8 +4,8 @@ package snf.stc;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public enum PagesCollection {
   ;
@@ -18,7 +18,7 @@ public enum PagesCollection {
   }
 
   public static List<String> pieces() {
-    return Stream.of(pages_root().toFile().listFiles()) //
+    return Arrays.stream(pages_root().toFile().listFiles()) //
         .filter(f -> PagesCollection.isValid(f.toPath())) //
         .map(File::getName) //
         .sorted() //
