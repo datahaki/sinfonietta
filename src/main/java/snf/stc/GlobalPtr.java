@@ -9,10 +9,19 @@ import ch.alpine.bridge.ref.ann.ReflectionMarker;
 import ch.alpine.bridge.swing.LookAndFeels;
 import ch.alpine.sonata.utl.MidiDevSelection;
 
+// TODO class name!
 @ReflectionMarker
 public class GlobalPtr {
-  public static final GlobalPtr GLOBAL = LocalStatic.resourceLocator().tryLoad(new GlobalPtr());
+  public static final GlobalPtr GLOBAL = new GlobalPtr();
+
+  public GlobalPtr() {
+    IO.println("******************* CONTRUCTOR GLOBAL PTR");
+// FIXME
+    midiPutSelection.name = "eX [hw:3,0,0]";
+  }
+
   // ---
+  public String here = "abc";
   public LookAndFeels lookAndFeels = LookAndFeels.DARK;
   public final MidiDevSelection midiPutSelection = new MidiDevSelection(true);
   @FieldSlider(showValue = true)

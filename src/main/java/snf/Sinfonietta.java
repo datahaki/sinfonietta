@@ -14,12 +14,14 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
+import ch.alpine.bridge.awt.AwtUtil;
 import ch.alpine.bridge.awt.LazyMouse;
 import ch.alpine.bridge.awt.LazyMouseListener;
 import ch.alpine.bridge.awt.WindowBounds;
 import ch.alpine.bridge.awt.WindowClosed;
 import ch.alpine.bridge.ref.FieldsEditorParam;
 import ch.alpine.bridge.ref.util.DialogFieldsEditor;
+import ch.alpine.bridge.ref.util.ObjectProperties;
 import ch.alpine.bridge.swing.CheckBoxIcon;
 import ch.alpine.bridge.swing.UIManagerInt;
 import ch.alpine.tensor.Scalar;
@@ -58,6 +60,7 @@ public class Sinfonietta implements LazyMouseListener {
   private final SinfoniettaSide sinfoniettaSide = new SinfoniettaSide();
 
   public Sinfonietta() {
+    AwtUtil.ctrlW(jFrame);
     WindowClosed.runs(jFrame, timer::cancel);
     WindowClosed.runs(jFrame, this::stopPlay);
     WindowClosed.runs(jFrame, TpfLocal.INSTANCE::shutdownMidiPut);
@@ -163,6 +166,8 @@ public class Sinfonietta implements LazyMouseListener {
   }
 
   static void main() {
+    ObjectProperties.LOAD_FAIL.set(true);
+    ObjectProperties.SAVE_FAIL.set(true);
     UIManager.put(UIManagerInt.ScrollBar_width.key(), FieldsEditorParam.GLOBAL.componentMinSize);
     GlobalPtr.GLOBAL.lookAndFeels.updateComponentTreeUI();
     FieldsEditorParam.GLOBAL.textFieldFont = new Font(Font.DIALOG, Font.PLAIN, 28);
@@ -173,8 +178,17 @@ public class Sinfonietta implements LazyMouseListener {
     FieldsEditorParam.GLOBAL.checkBoxParam.icon = CheckBoxIcon.METRO;
     FieldsEditorParam.GLOBAL.checkBoxParam.size = 36;
     // MidiPut midiPut = TpfLocal.INSTANCE.getMidiPut();
+    LocalStatic.resourceLocator().tryLoad(GlobalPtr.GLOBAL);
     Optional<GlobalPtr> optional = DialogFieldsEditor.block(null, GlobalPtr.GLOBAL, "Configuration");
-    optional.ifPresent(LocalStatic.resourceLocator()::trySave);
+    IO.println(optional);
+    IO.println("LISTING 1 =========");
+    ObjectProperties.list(GlobalPtr.GLOBAL).forEach(IO::println);
+    // optional.ifPresent(LocalStatic.resourceLocator()::trySave);
+//    LocalStatic.resourceLocator().trySave(GlobalPtr.GLOBAL);
+    GlobalPtr.GLOBAL. midiPutSelection.name = "eX [hw:1,0,0]";
+
+    IO.println("LISTING 2 =========");
+    ObjectProperties.list(GlobalPtr.GLOBAL).forEach(IO::println);
     if (optional.isPresent()) //
     {
       GlobalPtr.GLOBAL.lookAndFeels.updateComponentTreeUI();

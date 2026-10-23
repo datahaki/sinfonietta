@@ -55,21 +55,21 @@ import sys.gui.Shape2DCollection;
 import sys.gui.Shape2DObject;
 
 public class SinfoniettaComponent extends JPanel implements LazyMouseListener {
-  public static record SO_Synth(int index) {
+  public record SO_Synth(int index) {
   }
 
-  public static record SO_Dynamic(int index) {
+  public record SO_Dynamic(int index) {
   }
 
-  public static record SO_Tempo() {
+  public record SO_Tempo() {
     // ---
   }
 
-  public static record SO_Metro() {
+  public record SO_Metro() {
     // ---
   }
 
-  public static record SO_Pages() {
+  public record SO_Pages() {
     // ---
   }
 
