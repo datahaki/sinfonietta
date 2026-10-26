@@ -16,7 +16,7 @@ public class GlobalPtr {
 
   public GlobalPtr() {
     IO.println("******************* CONTRUCTOR GLOBAL PTR");
-// FIXME
+    // FIXME
     midiPutSelection.name = "eX [hw:3,0,0]";
   }
 

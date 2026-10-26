@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import ch.alpine.bridge.io.ResourceLocator;
-import ch.alpine.bridge.ref.util.ObjectProperties;
 import ch.alpine.tensor.ext.HomeDirectory;
 import snf.Sinfonietta;
 

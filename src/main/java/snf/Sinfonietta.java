@@ -184,9 +184,8 @@ public class Sinfonietta implements LazyMouseListener {
     IO.println("LISTING 1 =========");
     ObjectProperties.list(GlobalPtr.GLOBAL).forEach(IO::println);
     // optional.ifPresent(LocalStatic.resourceLocator()::trySave);
-//    LocalStatic.resourceLocator().trySave(GlobalPtr.GLOBAL);
-    GlobalPtr.GLOBAL. midiPutSelection.name = "eX [hw:1,0,0]";
-
+    // LocalStatic.resourceLocator().trySave(GlobalPtr.GLOBAL);
+    GlobalPtr.GLOBAL.midiPutSelection.name = "eX [hw:1,0,0]";
     IO.println("LISTING 2 =========");
     ObjectProperties.list(GlobalPtr.GLOBAL).forEach(IO::println);
     if (optional.isPresent()) //
