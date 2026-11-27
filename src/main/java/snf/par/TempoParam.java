@@ -14,6 +14,6 @@ public class TempoParam {
   public Integer bpm = 80;
 
   public Scalar bpm() {
-    return SI.PER_MINUTE.quantity(bpm);
+    return SI.PER_MINUTE.equipWithUnit(bpm);
   }
 }
